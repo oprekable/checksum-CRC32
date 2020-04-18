@@ -103,7 +103,7 @@ check_sign:
 	cd build && gpg --verify SHA256SUMS && gpg --decrypt SHA256SUMS | sha256sum -c
 
 upload_github:
-	./bin/upload-github $(TAG)
+	sudo ./bin/upload-github $(TAG)
 
 cross:
 	go run bin/cross-compile.go -release current $(BUILDTAGS) $(TAG)
