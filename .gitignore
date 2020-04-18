@@ -1,0 +1,11 @@
+*~
+_junk/
+main
+build
+checksum-CRC32.iml
+.idea
+.DS_Store
+.history
+*.test
+*.log
+*.iml
