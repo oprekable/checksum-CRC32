@@ -181,15 +181,15 @@ jobs:
         run: |
           make
           make compile_all
-          make upload_github
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.compile_all
 
       - name: Deploy built binaries
         shell: bash
         run: |
           if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then make release_dep ; fi
+          make upload_github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # working-directory: '$(modulePath)'
         # Deploy binaries if enabled in config && not a PR && not a fork
         if: matrix.deploy && github.head_ref == '' && github.repository == 'oprekable/checksum-CRC32'
