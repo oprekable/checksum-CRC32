@@ -129,13 +129,6 @@ jobs:
           sudo apt-get install rpm pkg-config
         if: matrix.os == 'ubuntu-latest'
 
-      - name: Install Libraries on macOS
-        shell: bash
-        run: |
-          brew update
-          brew upgrade
-        if: matrix.os == 'macOS-latest'
-
       - name: Install Libraries on Windows
         shell: powershell
         run: |
