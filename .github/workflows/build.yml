@@ -215,6 +215,7 @@ jobs:
         shell: bash
         run: |
           echo '::set-env name=GOPATH::${{ runner.workspace }}'
+          echo '::set-env name=GO111MODULE::on'
           echo '::add-path::${{ runner.workspace }}/bin'
 
       - name: Cross-compile checksum-CRC32
