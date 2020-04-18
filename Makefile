@@ -104,6 +104,7 @@ check_sign:
 
 upload_github:
 	chmod +x ./bin/upload-github
+	ls -alR
 	./bin/upload-github $(TAG)
 
 cross:
