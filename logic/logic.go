@@ -12,7 +12,8 @@ import (
 	"github.com/spf13/afero"
 )
 
-func ReadFile(fileName string, fs afero.Fs) (returnData afero.File, err error){
+// ReadFile ...
+func ReadFile(fileName string, fs afero.Fs) (returnData afero.File, err error) {
 	returnData, err = fs.Open(fileName)
 	if err != nil {
 		return
@@ -21,6 +22,7 @@ func ReadFile(fileName string, fs afero.Fs) (returnData afero.File, err error){
 	return
 }
 
+// ReaderToStringArray ...
 func ReaderToStringArray(handle io.Reader) (returnData []string) {
 	scanner := bufio.NewScanner(handle)
 	for scanner.Scan() {
@@ -32,6 +34,7 @@ func ReaderToStringArray(handle io.Reader) (returnData []string) {
 	return
 }
 
+// ReaderToBase64 ...
 func ReaderToBase64(handle io.Reader) (returnData string, err error) {
 	content, err := ioutil.ReadAll(handle)
 	if err != nil {
@@ -41,6 +44,7 @@ func ReaderToBase64(handle io.Reader) (returnData string, err error) {
 	return
 }
 
+// StringArrayToPathAbs ...
 func StringArrayToPathAbs(handle []string) (returnData []string) {
 	for _, v := range handle {
 		f, err := filepath.Abs(v)
@@ -51,6 +55,7 @@ func StringArrayToPathAbs(handle []string) (returnData []string) {
 	return
 }
 
+// FileToPathAbsArray ...
 func FileToPathAbsArray(fileName string, fs afero.Fs) (returnData []string, err error) {
 	file, err := ReadFile(fileName, fs)
 	if err != nil {
@@ -66,7 +71,8 @@ func FileToPathAbsArray(fileName string, fs afero.Fs) (returnData []string, err 
 	return
 }
 
-func CheckSumCRC32FromReader(handle io.Reader) (returnData uint32, err error){
+// CheckSumCRC32FromReader ...
+func CheckSumCRC32FromReader(handle io.Reader) (returnData uint32, err error) {
 	b64, err := ReaderToBase64(handle)
 	if err != nil {
 		return
@@ -79,7 +85,8 @@ func CheckSumCRC32FromReader(handle io.Reader) (returnData uint32, err error){
 	return
 }
 
-func CheckSumCRC32FromFilePath(fileName string, fs afero.Fs) (returnData uint32, err error){
+// CheckSumCRC32FromFilePath ...
+func CheckSumCRC32FromFilePath(fileName string, fs afero.Fs) (returnData uint32, err error) {
 	file, err := ReadFile(fileName, fs)
 	if err != nil {
 		return
@@ -88,7 +95,8 @@ func CheckSumCRC32FromFilePath(fileName string, fs afero.Fs) (returnData uint32,
 	return CheckSumCRC32FromReader(file)
 }
 
-func CheckSumCRC32FromFileCSVPath(fileCSVName string, fs afero.Fs) (returnData map[string]uint32, err error){
+// CheckSumCRC32FromFileCSVPath ...
+func CheckSumCRC32FromFileCSVPath(fileCSVName string, fs afero.Fs) (returnData map[string]uint32, err error) {
 	fileFromReadPathAbsArray, err := FileToPathAbsArray(fileCSVName, fs)
 	if err != nil {
 		return

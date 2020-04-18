@@ -49,7 +49,7 @@ func generateRandomString(n int) (returnData string, err error) {
 	return
 }
 
-func setFile(fileName string, nFile int)(returnFs afero.Fs, returnFileContent string, err error){
+func setFile(fileName string, nFile int) (returnFs afero.Fs, returnFileContent string, err error) {
 	returnFs = afero.NewMemMapFs()
 	file, err := returnFs.Create(fileName)
 
@@ -88,7 +88,7 @@ func setFile(fileName string, nFile int)(returnFs afero.Fs, returnFileContent st
 			continue
 		}
 		_, _ = fileImage.WriteString("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-")
-		fileImage.Close()
+		_ = fileImage.Close()
 		n++
 	}
 
@@ -105,7 +105,7 @@ func setFile(fileName string, nFile int)(returnFs afero.Fs, returnFileContent st
 
 func TestReadFileSuccess(t *testing.T) {
 	fileName := "file_list.csv"
-	appFS, fileContent, err := setFile(fileName,5)
+	appFS, fileContent, err := setFile(fileName, 5)
 
 	if err != nil {
 		t.Error(err)
@@ -120,7 +120,6 @@ func TestReadFileSuccess(t *testing.T) {
 	fileSetupStringArray := logic.ReaderToStringArray(strings.NewReader(fileContent))
 	fileFromReadStringArray := logic.ReaderToStringArray(fileFromRead)
 
-
 	assert.DeepEqual(t, fileSetupStringArray, fileFromReadStringArray)
 }
 
@@ -129,7 +128,7 @@ func TestReadFileError(t *testing.T) {
 	fs := afero.NewMemMapFs()
 	_, err := logic.ReadFile(fileName, fs)
 
-	assert.Error(t, err, "open " + fileName +": file does not exist")
+	assert.Error(t, err, "open "+fileName+": file does not exist")
 
 }
 
@@ -150,7 +149,6 @@ func TestFileToPathAbsArraySuccess(t *testing.T) {
 	fileSetupStringArray := logic.ReaderToStringArray(strings.NewReader(fileContent))
 	fileSetupPathAbsArray := logic.StringArrayToPathAbs(fileSetupStringArray)
 
-
 	assert.DeepEqual(t, fileSetupPathAbsArray, fileFromReadPathAbsArray)
 }
 
@@ -159,24 +157,24 @@ func TestFileToPathAbsArrayError(t *testing.T) {
 	fs := afero.NewMemMapFs()
 	_, err := logic.FileToPathAbsArray(fileName, fs)
 
-	assert.Error(t, err, "open " + fileName +": file does not exist")
+	assert.Error(t, err, "open "+fileName+": file does not exist")
 }
 
 func TestReaderToBase64Success(t *testing.T) {
 	imageFileInByte := helper.Box.Get("/arsya.jpg")
 	imageFileInReader := bytes.NewReader(imageFileInByte)
-	b64,err := logic.ReaderToBase64(imageFileInReader)
+	b64, err := logic.ReaderToBase64(imageFileInReader)
 
 	if err != nil {
 		t.Error(err)
 	}
-	
+
 	imageFileBase64InByte := string(helper.Box.Get("/arsya_base64.txt"))
 	assert.Equal(t, imageFileBase64InByte, b64)
 }
 
 func TestReaderToBase64Error(t *testing.T) {
-	_,err := logic.ReaderToBase64(errReader(0))
+	_, err := logic.ReaderToBase64(errReader(0))
 	assert.Error(t, err, "test error")
 }
 
@@ -219,7 +217,7 @@ func TestCheckSumCRC32FromFilePathSuccess(t *testing.T) {
 		crc32, err := logic.CheckSumCRC32FromFilePath(s, appFS)
 
 		if err != nil {
-			if err.Error() == "open " + s + ": file does not exist" {
+			if err.Error() == "open "+s+": file does not exist" {
 				continue
 			}
 
@@ -235,7 +233,7 @@ func TestCheckSumCRC32FromFilePathError(t *testing.T) {
 	fs := afero.NewMemMapFs()
 
 	_, err := logic.CheckSumCRC32FromFilePath(fileName, fs)
-	assert.Error(t, err, "open " + fileName +": file does not exist")
+	assert.Error(t, err, "open "+fileName+": file does not exist")
 }
 
 func TestCheckSumCRC32FromFileCSVPathSuccess(t *testing.T) {
@@ -264,7 +262,7 @@ func TestCheckSumCRC32FromFileCSVPathError(t *testing.T) {
 	fs := afero.NewMemMapFs()
 
 	_, err := logic.CheckSumCRC32FromFileCSVPath(fileName, fs)
-	assert.Error(t, err, "open " + fileName +": file does not exist")
+	assert.Error(t, err, "open "+fileName+": file does not exist")
 }
 
 func TestCheckSumCRC32FromFileCSVPathError2(t *testing.T) {
@@ -278,4 +276,3 @@ func TestCheckSumCRC32FromFileCSVPathError2(t *testing.T) {
 	_, err = logic.CheckSumCRC32FromFileCSVPath(fileName, appFS)
 	assert.Error(t, err, "empty data")
 }
-

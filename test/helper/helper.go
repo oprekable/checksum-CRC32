@@ -1,5 +1,6 @@
 //go:generate go run generator.go
 // From https://github.com/koddr/example-embed-static-files-go/blob/master/internal/box/box.go
+
 package helper
 
 type embedBox struct {
@@ -34,7 +35,7 @@ func (e *embedBox) Has(file string) bool {
 	return false
 }
 
-// Embed box expose
+// Box Embed box expose
 var Box = newEmbedBox()
 
 // Add a file content to box
