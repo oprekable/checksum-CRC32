@@ -77,12 +77,10 @@ release_dep:
 update:
 	GO111MODULE=on go get -u ./...
 	GO111MODULE=on go mod tidy
-	GO111MODULE=on go mod vendor
 
 # Tidy the module dependencies
 tidy:
 	GO111MODULE=on go mod tidy
-	GO111MODULE=on go mod vendor
 
 clean:
 	go clean ./...
