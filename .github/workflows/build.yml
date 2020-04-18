@@ -230,4 +230,4 @@ jobs:
       - name: Build checksum-CRC32
         run: |
           docker pull golang
-          docker run --rm -v "$PWD":/usr/src/checksum-CRC32 -w /usr/src/checksum-CRC32 golang go build -mod=vendor -v
+          docker run --rm -v "$PWD":/usr/src/checksum-CRC32 -w /usr/src/checksum-CRC32 golang go build -v
