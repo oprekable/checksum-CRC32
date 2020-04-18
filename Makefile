@@ -37,7 +37,7 @@ endif
 
 .PHONY: checksum_crc32 vars generate version
 
-checksum_crc32:
+checksum_crc32: update
 	go build -v --ldflags "-s -X github.com/oprekable/checksum-CRC32/fs.Version=$(TAG)" $(BUILDTAGS)
 	mkdir -p `go env GOPATH`/bin/
 	cp -av checksum-CRC32`go env GOEXE` `go env GOPATH`/bin/checksum-CRC32`go env GOEXE`.new
