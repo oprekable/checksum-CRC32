@@ -30,7 +30,6 @@ jobs:
             build_flags: '-include "^linux/"'
             check: true
             quicktest: true
-            deploy: true
 
           - job_name: mac
             os: macOS-latest
@@ -40,7 +39,6 @@ jobs:
             build_flags: '-include "^darwin/amd64" -cgo'
             quicktest: true
             racequicktest: true
-            deploy: true
 
           - job_name: windows_amd64
             os: windows-latest
@@ -50,7 +48,6 @@ jobs:
             build_flags: '-include "^windows/amd64" -cgo'
             quicktest: true
             racequicktest: true
-            deploy: true
 
           - job_name: windows_386
             os: windows-latest
@@ -61,7 +58,6 @@ jobs:
             cgo: '1'
             build_flags: '-include "^windows/386" -cgo'
             quicktest: true
-            deploy: true
 
           - job_name: other_os
             os: ubuntu-latest
@@ -190,8 +186,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USER: 'oprekable'
-        # working-directory: '$(modulePath)'
-        # Deploy binaries if enabled in config && not a PR && not a fork
         if: matrix.deploy && github.head_ref == '' && github.repository == 'oprekable/checksum-CRC32'
 
   xgo:
