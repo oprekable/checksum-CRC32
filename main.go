@@ -46,7 +46,7 @@ func fileCSVHandler(fileCSV string, fs afero.Fs) {
 	}
 
 	for k, v := range mapData {
-		fmt.Printf("%v\t%v", k, v)
+		fmt.Printf("%v\t%v\n", k, v)
 	}
 }
 
@@ -62,5 +62,5 @@ func fileImageHandler(fileImage string, fs afero.Fs) {
 		fmt.Printf("%v", err)
 		os.Exit(1)
 	}
-	fmt.Printf("%v\t%v", fileImage, crc32)
+	fmt.Printf("%v\t%v\n", fileImage, crc32)
 }
