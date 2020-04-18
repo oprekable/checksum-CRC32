@@ -1,0 +1,18 @@
+name: "checksum-CRC32"
+arch: "{{.Arch}}"
+platform: "linux"
+version: "{{.Version}}"
+section: "default"
+priority: "extra"
+provides:
+  - rclone
+maintainer: "Oprekable <oprekable@gmail.com>"
+description: |
+  checksum-CRC32 - "checksum image file tool"
+    is a command line program to checksum image file tool to base64 and count based on CRC32.
+vendor: "rclone"
+homepage: "https://github.com/oprekable/checksum-CRC32"
+license: "MIT"
+bindir: "/usr/bin"
+files:
+  ./checksum-CRC32: "/usr/bin/checksum-CRC32"

@@ -149,7 +149,7 @@ func buildDebAndRpm(dir, version, goarch string) []string {
 	pkgVersion = strings.Replace(pkgVersion, "-", ".", -1)
 
 	// Make nfpm.yaml from the template
-	substitute("../nfpm.yaml", path.Join(dir, "nfpm.yaml"), map[string]string{
+	substitute("../bin/nfpm.yaml", path.Join(dir, "nfpm.yaml"), map[string]string{
 		"Version": pkgVersion,
 		"Arch":    goarch,
 	})
