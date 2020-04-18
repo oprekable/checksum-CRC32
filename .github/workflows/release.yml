@@ -182,7 +182,7 @@ jobs:
       - name: Deploy built binaries
         shell: bash
         run: |
-          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then make release_dep ; make upload_github; fi
+          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then make release_dep ; make cross; make upload_github; fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USER: 'oprekable'

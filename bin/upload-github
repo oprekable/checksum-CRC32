@@ -29,7 +29,7 @@ github-release release \
     --name "checksum-CRC32" \
     --description "checksum-CRC32 - checksum image file tool."
 
-for build in `ls build | grep -v current | grep -v testbuilds`; do
+for build in `ls build | grep -v current | grep -v testbuilds | grep zip`; do
     echo "Uploading ${build}"
     base="${build%.*}"
     parts=(${base//-/ })
