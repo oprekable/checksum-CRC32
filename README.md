@@ -1,4 +1,4 @@
-[![GitHub release](https://img.shields.io/github/release/oprekable/checksum-CRC32.svg)](https://github.com/oprekable/checksum-CRC32/releases/latest) 
+[![GitHub release](https://img.shields.io/github/release/oprekable/checksum-CRC32.svg)](https://github.com/oprekable/checksum-CRC32/releases/latest) ![build](https://github.com/oprekable/checksum-CRC32/workflows/build/badge.svg?branch=master) 
 
 # checksum-CRC32
 
