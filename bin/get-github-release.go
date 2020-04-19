@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/pkg/errors"
+	"golang.org/x/net/html"
+	"golang.org/x/sys/unix"
 	"io"
 	"io/ioutil"
 	"log"
@@ -28,9 +31,6 @@ import (
 	"runtime"
 	"strings"
 	"time"
-	"golang.org/x/net/html"
-	"golang.org/x/sys/unix"
-	"github.com/pkg/errors"
 )
 
 var (
@@ -426,7 +426,6 @@ func main() {
 		untar(fileName, *extract, *bindir+"/")
 	}
 }
-
 
 // URLJoin joins a URL and a path returning a new URL
 //

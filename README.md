@@ -1,4 +1,4 @@
-[![GitHub release](https://img.shields.io/github/release/oprekable/checksum-CRC32.svg)](https://github.com/oprekable/checksum-CRC32/releases/latest) ![build](https://github.com/oprekable/checksum-CRC32/workflows/build/badge.svg?branch=master) 
+[![GitHub release](https://img.shields.io/github/release/oprekable/checksum-CRC32.svg)](https://github.com/oprekable/checksum-CRC32/releases/latest) ![build](https://github.com/oprekable/checksum-CRC32/workflows/build/badge.svg?branch=master) [![Go Report Card](https://goreportcard.com/badge/github.com/oprekable/checksum-CRC32?style=flat-square)](https://goreportcard.com/report/github.com/oprekable/checksum-CRC32)
 
 # checksum-CRC32
 
